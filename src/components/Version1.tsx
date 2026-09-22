@@ -190,12 +190,15 @@ const Version1 = React.memo(() => {
               <thead>
                 <tr className="bg-white" style={{ borderTop: 'none' }}>
                   <th className="p-3" style={{ position: 'sticky', left: 0, zIndex: 10, backgroundColor: 'white' }}></th>
-                  {visibleDates.map((d) => {
+                  {visibleDates.map((d, i) => {
                     const activeCols = [visibleColumns.hunger, visibleColumns.logistics, visibleColumns.eaten].filter(Boolean).length;
                     return (
-                      <th key={d} className="p-3 text-center text-sm font-semibold text-black" colSpan={activeCols} style={{ backgroundColor: '#F7F7FA', borderRadius: '12px 12px 0 0' }}>
-                        {dateLabels[d]}
-                      </th>
+                      <Fragment key={d}>
+                        <th className="p-3 text-center text-sm font-semibold text-black" colSpan={activeCols} style={{ backgroundColor: '#F7F7FA', borderRadius: '12px 12px 0 0' }}>
+                          {dateLabels[d]}
+                        </th>
+                        {i < visibleDates.length - 1 && <th className="bg-white"></th>}
+                      </Fragment>
                     );
                   })}
                 </tr>
@@ -203,7 +206,7 @@ const Version1 = React.memo(() => {
                   <th className="p-2 text-xs font-semibold uppercase text-left border-r border-gray-200" style={{ paddingLeft: '24px', position: 'sticky', left: 0, zIndex: 10, backgroundColor: 'white', color: '#767386' }}>
                     Питомец ↓
                   </th>
-                  {visibleDates.map((d) => (
+                  {visibleDates.map((d, i) => (
                     <Fragment key={d}>
                       {visibleColumns.hunger && (
                         <th className="text-xs font-semibold uppercase text-left cursor-pointer hover:bg-gray-50 transition-colors" style={{ color: '#767386', padding: '16px' }} onClick={() => { setSortState(prev => ({ ...prev, hunger: prev.hunger === 'none' ? 'desc' : prev.hunger === 'desc' ? 'asc' : 'none', logistics: 'none', eaten: 'none' })); }}>
@@ -226,6 +229,7 @@ const Version1 = React.memo(() => {
                           </div>
                         </th>
                       )}
+                      {i < visibleDates.length - 1 && <th></th>}
                     </Fragment>
                   ))}
                 </tr>
@@ -233,7 +237,7 @@ const Version1 = React.memo(() => {
               <tbody className="bg-white">
                 {sortedPets.length === 0 ? (
                   <tr>
-                    <td colSpan={1 + visibleDates.length * 3} className="p-8 text-center text-gray-400 text-sm">
+                    <td colSpan={1 + visibleDates.length * 3 + Math.max(0, visibleDates.length - 1)} className="p-8 text-center text-gray-400 text-sm">
                       Нет питомцев по выбранным фильтрам
                     </td>
                   </tr>
@@ -246,7 +250,7 @@ const Version1 = React.memo(() => {
                           <span className="text-xs text-gray-400">{pet.location}</span>
                         </div>
                       </td>
-                      {visibleDates.map((d) => {
+                      {visibleDates.map((d, i) => {
                         const dayData = pet.days[d];
                         return (
                           <Fragment key={d}>
@@ -275,6 +279,7 @@ const Version1 = React.memo(() => {
                                 )}
                               </td>
                             )}
+                            {i < visibleDates.length - 1 && <td></td>}
                           </Fragment>
                         );
                       })}
