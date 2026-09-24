@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, ChevronLeft, ChevronRight, Calendar } from 'lucide-react';
 
 interface DatePickerProps {
@@ -7,7 +7,7 @@ interface DatePickerProps {
   onChange: (start: string, end: string) => void;
 }
 
-const DatePicker = React.memo(({ startDate, endDate, onChange }: DatePickerProps) => {
+function DatePicker({ startDate, endDate, onChange }: DatePickerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectingStart, setSelectingStart] = useState(true);
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -146,8 +146,6 @@ const DatePicker = React.memo(({ startDate, endDate, onChange }: DatePickerProps
       )}
     </div>
   );
-});
-
-DatePicker.displayName = 'DatePicker';
+}
 
 export default DatePicker;

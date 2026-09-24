@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   ChevronRight,
   ChevronDown,
@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { mainTabs, subTabs } from '../data/petData';
 
-const FilterDropdown = React.memo(({
+function FilterDropdown({
   label,
   value,
   compact = false,
@@ -17,7 +17,7 @@ const FilterDropdown = React.memo(({
   label: string;
   value: string;
   compact?: boolean;
-}) => {
+}) {
   return (
     <div className="flex flex-col">
       {label && <label className="text-xs text-gray-500 mb-1">{label}</label>}
@@ -31,11 +31,9 @@ const FilterDropdown = React.memo(({
       </div>
     </div>
   );
-});
+}
 
-FilterDropdown.displayName = 'FilterDropdown';
-
-const Version0 = React.memo(() => {
+function Version0() {
   const [activeTab, setActiveTab] = React.useState('Тарифы на корм');
   const [activeSubTab, setActiveSubTab] = React.useState('Тарифы на еду');
   const [checkbox1, setCheckbox1] = React.useState(false);
@@ -348,8 +346,6 @@ const Version0 = React.memo(() => {
       </div>
     </div>
   );
-});
-
-Version0.displayName = 'Version0';
+}
 
 export default Version0;

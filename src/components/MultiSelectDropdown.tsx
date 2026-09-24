@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Check } from 'lucide-react';
 
 interface MultiSelectDropdownProps {
@@ -9,7 +9,7 @@ interface MultiSelectDropdownProps {
   width?: number;
 }
 
-const MultiSelectDropdown = React.memo(({ label, options, selected, onChange, width }: MultiSelectDropdownProps) => {
+function MultiSelectDropdown({ label, options, selected, onChange, width }: MultiSelectDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -73,8 +73,6 @@ const MultiSelectDropdown = React.memo(({ label, options, selected, onChange, wi
       )}
     </div>
   );
-});
-
-MultiSelectDropdown.displayName = 'MultiSelectDropdown';
+}
 
 export default MultiSelectDropdown;

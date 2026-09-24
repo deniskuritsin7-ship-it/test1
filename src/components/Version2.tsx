@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { ChevronRight, Settings } from 'lucide-react';
 import { mainTabs, subTabs, allPets, dates, petOptions, shippingOptions, volumeOptions } from '../data/petData';
 import MultiSelectDropdown from './MultiSelectDropdown';
 import RadioSelectDropdown from './RadioSelectDropdown';
 import DatePicker from './DatePicker';
 
-const Version2 = React.memo(() => {
+function Version2() {
   const [activeTab, setActiveTab] = useState('Тарифы на корм');
   const [activeSubTab, setActiveSubTab] = useState('Тарифы на еду');
   const [checkbox1, setCheckbox1] = useState(false);
@@ -179,8 +179,6 @@ const Version2 = React.memo(() => {
       </div>
     </div>
   );
-});
-
-Version2.displayName = 'Version2';
+}
 
 export default Version2;

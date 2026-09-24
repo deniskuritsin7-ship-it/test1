@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 interface RadioSelectDropdownProps {
@@ -9,7 +9,7 @@ interface RadioSelectDropdownProps {
   width?: number;
 }
 
-const RadioSelectDropdown = React.memo(({ label, options, selected, onChange, width }: RadioSelectDropdownProps) => {
+function RadioSelectDropdown({ label, options, selected, onChange, width }: RadioSelectDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -62,8 +62,6 @@ const RadioSelectDropdown = React.memo(({ label, options, selected, onChange, wi
       )}
     </div>
   );
-});
-
-RadioSelectDropdown.displayName = 'RadioSelectDropdown';
+}
 
 export default RadioSelectDropdown;
