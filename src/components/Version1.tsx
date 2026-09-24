@@ -1,4 +1,4 @@
-import React, { useState, useMemo, Fragment } from 'react';
+import { useState, useMemo, Fragment } from 'react';
 import { ChevronRight, ChevronDown, Settings } from 'lucide-react';
 import { mainTabs, subTabs, allPets, dates, dateLabels, petOptions, shippingOptions, volumeOptions } from '../data/petData';
 import MultiSelectDropdown from './MultiSelectDropdown';
@@ -7,7 +7,7 @@ import DatePicker from './DatePicker';
 
 const GAP = 48;
 
-const Version1 = React.memo(() => {
+function Version1() {
   const [activeTab, setActiveTab] = useState('Тарифы на корм');
   const [activeSubTab, setActiveSubTab] = useState('Тарифы на еду');
   const [checkbox1, setCheckbox1] = useState(false);
@@ -331,8 +331,6 @@ const Version1 = React.memo(() => {
       )}
     </div>
   );
-});
-
-Version1.displayName = 'Version1';
+}
 
 export default Version1;

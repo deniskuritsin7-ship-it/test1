@@ -1,18 +1,9 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState } from 'react';
 import { MoreVertical } from 'lucide-react';
-
-const Version0 = lazy(() => import('./components/Version0'));
-const Version1 = lazy(() => import('./components/Version1'));
-const Version2 = lazy(() => import('./components/Version2'));
-const Version3 = lazy(() => import('./components/Version3'));
-
-function LoadingSpinner() {
-  return (
-    <div className="flex items-center justify-center py-20">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
-    </div>
-  );
-}
+import Version0 from './components/Version0';
+import Version1 from './components/Version1';
+import Version2 from './components/Version2';
+import Version3 from './components/Version3';
 
 function App() {
   const [currentVersion, setCurrentVersion] = useState<'0' | '1' | '2' | '3'>('1');
@@ -60,12 +51,10 @@ function App() {
       </div>
 
       <div className="mx-auto" style={{ maxWidth: '1440px' }}>
-        <Suspense fallback={<LoadingSpinner />}>
-          {currentVersion === '0' && <Version0 />}
-          {currentVersion === '1' && <Version1 />}
-          {currentVersion === '2' && <Version2 />}
-          {currentVersion === '3' && <Version3 />}
-        </Suspense>
+        {currentVersion === '0' && <Version0 />}
+        {currentVersion === '1' && <Version1 />}
+        {currentVersion === '2' && <Version2 />}
+        {currentVersion === '3' && <Version3 />}
       </div>
     </div>
   );
