@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import {
   ChevronRight,
   ChevronDown,
@@ -34,12 +34,12 @@ function FilterDropdown({
 }
 
 function Version0() {
-  const [activeTab, setActiveTab] = React.useState('Тарифы на корм');
-  const [activeSubTab, setActiveSubTab] = React.useState('Тарифы на еду');
-  const [checkbox1, setCheckbox1] = React.useState(false);
-  const [checkbox2, setCheckbox2] = React.useState(false);
+  const [activeTab, setActiveTab] = useState('Тарифы на корм');
+  const [activeSubTab, setActiveSubTab] = useState('Тарифы на еду');
+  const [checkbox1, setCheckbox1] = useState(false);
+  const [checkbox2, setCheckbox2] = useState(false);
 
-  const petRows = React.useMemo(() => [
+  const petRows = useMemo(() => [
     {
       name: 'Собака',
       emoji: '🐕',
